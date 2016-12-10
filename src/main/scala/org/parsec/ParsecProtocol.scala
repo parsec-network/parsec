@@ -53,6 +53,7 @@ object ParsecProtocol {
     */
   case class Invoice(invoiceAddress: String, price: Double, currency: String, invoiceType: String = "") {
     assert(ALLOWED_CURRENCIES.contains(currency), s"PasecProtocol: Currency $currency is not an allowed currency. Use: " + ALLOWED_CURRENCIES.mkString(" or "))
+
     // The Hash can be calculated as a transformation function to the invoiceAddress
     // TODO: implement me
     def produceInvoiceHash = "######-####-####"
@@ -68,6 +69,7 @@ object ParsecProtocol {
     */
   case class HashPointer(transactionID: String, // i.e. invoiceID
                          transactionHash: String)
+
   /**
     * The consumer needs to settle/pay the INVOICE
     *
@@ -78,10 +80,11 @@ object ParsecProtocol {
                            supplierAddress: String, // no need to know PK
                            buyerPublicKey: String, // infer the address from here
                            currency: String,
+                           price: Double,
                            channel: String = DEFAULT_CHANNEL,
-                           hashPointerToPrevious: HashPointer,
-                           price: Double) {
+                           hashPointerToPrevious: HashPointer) {
     assert(ALLOWED_CURRENCIES.contains(currency), s"PasecProtocol: Currency $currency is not an allowed currency. Use: " + ALLOWED_CURRENCIES.mkString(" or "))
+
     // TODO: implement me
     def getBuyerAddress: String = "generate-from-buyerPublicKey"
   }
