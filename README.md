@@ -20,6 +20,7 @@ You can view the **messages** as they are shown in the
 ## A bit of theory
 
  https://github.com/parsec-network/parsec/blob/specs/docs/specs/parsec_pay_setup.png
+ 
  https://github.com/parsec-network/parsec/blob/specs/docs/specs/customer_journey_parsec_payment.png
 
 * Study Hashed Time Lock -> https://rusty.ozlabs.org/?p=462 to understand how the smart contract happens
