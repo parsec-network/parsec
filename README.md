@@ -13,7 +13,6 @@ Just edit the KProducer.scala run:
 
 You can see the **schemas** as they are registered in the
 [schema-registry-ui](http://schema-registry-ui.landoop.com/#/schema/PARSEC-PAYMENTS-value/version/latest)
-search for the **PARSEC-PAYMENTS** topic
 
 You can view the **messages** as they are shown in the
 [kafka-topics-ui](http://kafka-topics-ui.landoop.com/#/topic/n/PARSEC-PAYMENTS/rawdata)
