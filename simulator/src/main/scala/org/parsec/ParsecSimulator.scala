@@ -1,7 +1,8 @@
 package org.parsec
 
 import com.github.nscala_time.time.Imports._
-import org.parsec.ParsecProtocol.{HashPointer, SignedInvoice}
+import org.parsec.ParsecProtocol._
+
 import scala.util.{Failure, Success, Try}
 
 /**
