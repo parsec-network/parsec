@@ -12,10 +12,10 @@ Just edit the KProducer.scala run:
 ## Kafka cluster
 
 You can see the **schemas** as they are registered in the
-[schema-registry-ui](http://schema-registry-ui.landoop.com/#/schema/PARSEC-PAYMENTS-value/version/latest)
+[schema-registry-ui](http://parsec.playground.landoop.com:43030/schema-registry-ui/#/schema/PARSEC-PAYMENTS-value/version/latest)
 
 You can view the **messages** as they are shown in the
-[kafka-topics-ui](http://kafka-topics-ui.landoop.com/#/topic/n/PARSEC-PAYMENTS/rawdata)
+[kafka-topics-ui](http://parsec.playground.landoop.com:43030/kafka-topics-ui/#/topic/n/PARSEC-PAYMENTS/rawdata)
 
 ## A bit of theory
 
@@ -30,3 +30,10 @@ You can view the **messages** as they are shown in the
 ## TODO
 
 Blog /blog/2016/12/parsec-scaling-cryptocurrency-with-kafka/
+
+Decide on State management implementation. KStreams is a good choice:
+- partition aware (it auto handles partitioning when scaling)
+- state keeping is like samza but improved from functionality from Google
+- persists on RocksDB and compacted topics
+- it persists on RocksDB and compacted topics
+- it resumes from where it left when it crashes
