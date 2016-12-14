@@ -78,15 +78,39 @@ object Parsec {
   case class SignedInvoice(invoiceID: String = "auto-generate-random-UUID+channel", // import java.util.UUID
                            invoiceSignature: String,
                            supplierAddress: String, // no need to know PK
-                           buyerPublicKey: String, // infer the address from here
+                           buyerPublicKey: String,
+                           buyerAddress: String,
                            currency: String,
                            price: Double,
                            channel: String = DEFAULT_CHANNEL,
                            hashPointerToPrevious: HashPointer) {
     assert(ALLOWED_CURRENCIES.contains(currency), s"PasecProtocol: Currency $currency is not an allowed currency. Use: " + ALLOWED_CURRENCIES.mkString(" or "))
+    assert(buyerPublicKey.length equals 128, "Wrong public key format. An ECDSA public key is 128 hex characters long")
+    assert(isValidBuyerAddress)
 
-    // TODO: implement me
-    def getBuyerAddress: String = "generate-from-buyerPublicKey"
+    def isValidBuyerAddress: Boolean = {
+      if (currency == "ETH")
+        return buyerAddress equals ethereumAddressFromPublicKey(buyerPublicKey)
+      else
+        return ((buyerAddress equals bitcoinP2PKHAddressFromPublicKey(buyerPublicKey))
+               ||
+               (buyerAddress equals bitcoinP2SHAddressFromPublicKey(buyerPublicKey)))
+    }
+  }
+
+  // TODO: implement me
+  def ethereumAddressFromPublicKey(key: String): String = {
+    return "eth-public-key"
+  }
+
+  // TODO: implement me
+  def bitcoinP2PKHAddressFromPublicKey(key: String): String = {
+    return "btc-public-key"
+  }
+
+  // TODO: implement me
+  def bitcoinP2SHAddressFromPublicKey(key: String): String = {
+    return "btc-public-key"
   }
 
 }
