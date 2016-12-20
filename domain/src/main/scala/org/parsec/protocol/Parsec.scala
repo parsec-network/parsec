@@ -1,5 +1,7 @@
 package org.parsec.protocol
 
+import org.bouncycastle.jcajce.provider.digest.Keccak
+
 /**
   * The Parsec protocol introduces a layer for `crypto-currency` transactions to take place,
   * without necessarily being registered into the the global block-chain
@@ -100,17 +102,18 @@ object Parsec {
 
   // TODO: implement me
   def ethereumAddressFromPublicKey(key: String): String = {
-    return "eth-public-key"
+    val keccak256 = new Keccak.Digest256
+    new String(keccak256.digest(key.getBytes()))
   }
 
   // TODO: implement me
   def bitcoinP2PKHAddressFromPublicKey(key: String): String = {
-    return "btc-public-key"
+    "btc-public-key"
   }
 
   // TODO: implement me
   def bitcoinP2SHAddressFromPublicKey(key: String): String = {
-    return "btc-public-key"
+    "btc-public-key"
   }
 
 }

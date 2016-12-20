@@ -52,7 +52,11 @@
     kafkaAvroSerializer
   )
 
-  /** Logging */
+  /** Cryptography */
+  def bouncycastle = "org.bouncycastle" % "bcprov-ext-debug-jdk15on" % "1.55"
+
+
+/** Logging */
   def slf4jApi = "org.slf4j" % "slf4j-api" % slf4jVersion
   def log4jOverSlf4j = "org.slf4j" % "log4j-over-slf4j" % slf4jVersion
   def logbackClassic = "ch.qos.logback" % "logback-classic" % "1.1.2"
@@ -74,7 +78,8 @@
     "com.typesafe" % "config" % "1.2.1",
     slf4jApi,
     log4jOverSlf4j,
-    logbackClassic
+    logbackClassic,
+    bouncycastle
   )
 
   lazy val baseScalaDependencies = Seq(
