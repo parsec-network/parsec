@@ -1,6 +1,9 @@
 package org.parsec.protocol
 
+import java.util
+
 import org.bouncycastle.jcajce.provider.digest.Keccak
+import org.apache.commons.codec.binary.Hex
 
 /**
   * The Parsec protocol introduces a layer for `crypto-currency` transactions to take place,
@@ -100,10 +103,12 @@ object Parsec {
     }
   }
 
-  // TODO: implement me
   def ethereumAddressFromPublicKey(key: String): String = {
+    val keyBytes = Hex.decodeHex(key.toCharArray) // Convert HEX public key to bytes
     val keccak256 = new Keccak.Digest256
-    new String(keccak256.digest(key.getBytes()))
+    val keyHash = keccak256.digest(keyBytes) // Take the Keccak-256 hash of the public key
+    val addressBytes = util.Arrays.copyOfRange(keyHash, 12, keyHash.length) // Drop the 12 first bytes of the hash
+    Hex.encodeHexString(addressBytes) // Return the hex hash
   }
 
   // TODO: implement me

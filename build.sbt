@@ -54,9 +54,10 @@
 
   /** Cryptography */
   def bouncycastle = "org.bouncycastle" % "bcprov-ext-debug-jdk15on" % "1.55"
+  def codec = "org.apache.directory.studio" % "org.apache.commons.codec" % "1.8"
 
 
-/** Logging */
+  /** Logging */
   def slf4jApi = "org.slf4j" % "slf4j-api" % slf4jVersion
   def log4jOverSlf4j = "org.slf4j" % "log4j-over-slf4j" % slf4jVersion
   def logbackClassic = "ch.qos.logback" % "logback-classic" % "1.1.2"
@@ -79,7 +80,8 @@
     slf4jApi,
     log4jOverSlf4j,
     logbackClassic,
-    bouncycastle
+    bouncycastle,
+    codec
   )
 
   lazy val baseScalaDependencies = Seq(
