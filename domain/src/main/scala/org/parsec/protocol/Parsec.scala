@@ -1,10 +1,5 @@
 package org.parsec.protocol
 
-import java.util
-
-import org.bouncycastle.jcajce.provider.digest.Keccak
-import org.apache.commons.codec.binary.Hex
-
 /**
   * The Parsec protocol introduces a layer for `crypto-currency` transactions to take place,
   * without necessarily being registered into the the global block-chain
