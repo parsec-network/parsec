@@ -1,6 +1,7 @@
 package org.parsec.protocol
 
-import org.bitcoinj.core.ECKey
+import org.apache.commons.codec.binary.Hex
+import org.bitcoinj.core.{ECKey, NetworkParameters}
 
 trait BitcoinCryptography {
   // TODO: implement me
@@ -14,12 +15,25 @@ trait BitcoinCryptography {
   }
 
   def bitcoinAddressFromPublicKey(key: String): String = {
-    val key = new ECKey(key)
-    "btc-public-key"
+    val ECkey = ECKey.fromPublicOnly(Hex.decodeHex(key.toCharArray))
+    val netParams = NetworkParameters.prodNet() // Generating only production addresses
+    val addressFromKey = ECkey.toAddress(netParams)
+    addressFromKey.toString
   }
 }
 
 // TODO: DELETE ME Example implementation
+
+//>  ECKey key =
+//>         ECKey.fromPrivate(HashUtil.sha3(TimeStamp+myuniquepass+randomnumber .getBytes())); // not working code , but you get the point.
+//>
+//>
+//>         byte[] addr = key.getAddress();
+//>         byte[] priv = key.getPrivKeyBytes();
+//>           byte[] pb=      key.getPubKey();
+//>
+//>         String addrBase16 = Hex.toHexString(addr);
+//>         String privBase16 = Hex.toHexString(priv);
 //
 //001|package com.waferthin.bitcoinj;
 //002|
