@@ -9,7 +9,7 @@ import org.apache.commons.codec.binary.Hex
   * The Parsec protocol introduces a layer for `crypto-currency` transactions to take place,
   * without necessarily being registered into the the global block-chain
   */
-object Parsec {
+object Parsec extends EthereumCryptography with BitcoinCryptography {
 
   val customerPaymentJourney =
     """
@@ -101,24 +101,6 @@ object Parsec {
                ||
                (buyerAddress equals bitcoinP2SHAddressFromPublicKey(buyerPublicKey)))
     }
-  }
-
-  def ethereumAddressFromPublicKey(key: String): String = {
-    val keyBytes = Hex.decodeHex(key.toCharArray) // Convert HEX public key to bytes
-    val keccak256 = new Keccak.Digest256
-    val keyHash = keccak256.digest(keyBytes) // Take the Keccak-256 hash of the public key
-    val addressBytes = util.Arrays.copyOfRange(keyHash, 12, keyHash.length) // Drop the 12 first bytes of the hash
-    Hex.encodeHexString(addressBytes) // Return the hex hash
-  }
-
-  // TODO: implement me
-  def bitcoinP2PKHAddressFromPublicKey(key: String): String = {
-    "btc-public-key"
-  }
-
-  // TODO: implement me
-  def bitcoinP2SHAddressFromPublicKey(key: String): String = {
-    "btc-public-key"
   }
 
 }
