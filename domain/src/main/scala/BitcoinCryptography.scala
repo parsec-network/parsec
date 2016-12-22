@@ -1,13 +1,13 @@
 package org.parsec.protocol
 
-trait BitcoinCryptography {
-  // TODO: implement me
-  def bitcoinP2PKHAddressFromPublicKey(key: String): String = {
-    "btc-public-key"
-  }
+import org.apache.commons.codec.binary.Hex
+import org.bitcoinj.core.{ECKey, NetworkParameters}
 
-  // TODO: implement me
-  def bitcoinP2SHAddressFromPublicKey(key: String): String = {
-    "btc-public-key"
+trait BitcoinCryptography {
+  def bitcoinAddressFromPublicKey(key: String): String = {
+    val ECkey = ECKey.fromPublicOnly(Hex.decodeHex(key.toCharArray))
+    val netParams = NetworkParameters.prodNet() // Generating only production addresses
+    val addressFromKey = ECkey.toAddress(netParams)
+    addressFromKey.toString
   }
 }

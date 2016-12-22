@@ -55,11 +55,12 @@
   /** Cryptography */
   def bouncycastle = "org.bouncycastle" % "bcprov-ext-debug-jdk15on" % "1.55"
   def codec = "org.apache.directory.studio" % "org.apache.commons.codec" % "1.8"
+  def bitcoinj = "org.bitcoinj" % "bitcoinj-core" % "0.14.3"
   def crypto = Seq(
     bouncycastle,
-    codec
+    codec,
+    bitcoinj
   )
-
 
   /** Logging */
   def slf4jApi = "org.slf4j" % "slf4j-api" % slf4jVersion
