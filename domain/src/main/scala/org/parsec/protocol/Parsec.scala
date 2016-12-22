@@ -46,17 +46,13 @@ object Parsec extends EthereumCryptography with BitcoinCryptography {
   /**
     * The seller needs to produce an INVOICE (through NFC or Parsec channel)
     *
-    * @param invoiceAddress the sellect address for the currency to be transferred to
+    * @param invoiceAddress the destination address for the payment to be transferred to
     * @param price          the amount of currency to exchange
     * @param currency       ETH or BTC supported
     * @param invoiceType    (optional) use to pass-in other metadata about the invoice
     */
   case class Invoice(invoiceAddress: String, price: Double, currency: String, invoiceType: String = "") {
     assert(ALLOWED_CURRENCIES.contains(currency), s"PasecProtocol: Currency $currency is not an allowed currency. Use: " + ALLOWED_CURRENCIES.mkString(" or "))
-
-    // The Hash can be calculated as a transformation function to the invoiceAddress
-    // TODO: implement me
-    def produceInvoiceHash = "######-####-####"
   }
 
   /**
@@ -87,12 +83,20 @@ object Parsec extends EthereumCryptography with BitcoinCryptography {
     assert(ALLOWED_CURRENCIES.contains(currency), s"PasecProtocol: Currency $currency is not an allowed currency. Use: " + ALLOWED_CURRENCIES.mkString(" or "))
     assert(isValidBuyerAddress)
 
-    def isValidBuyerAddress: Boolean = {
+    private def isValidBuyerAddress: Boolean = {
       if (currency == "ETH")
         return buyerAddress equals ethereumAddressFromPublicKey(buyerPublicKey)
       else
         return buyerAddress equals bitcoinAddressFromPublicKey(buyerPublicKey)
     }
+    // The Hash is calculated from the concatenation of
+    // - invoiceID
+    // - supplierAddress
+    // - buyerAddress
+    // - currency
+    // - price
+    // TODO: implement me
+    def invoiceHash = "######-####-####"
   }
 
 }
