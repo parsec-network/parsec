@@ -55,6 +55,10 @@
   /** Cryptography */
   def bouncycastle = "org.bouncycastle" % "bcprov-ext-debug-jdk15on" % "1.55"
   def codec = "org.apache.directory.studio" % "org.apache.commons.codec" % "1.8"
+  def crypto = Seq(
+    bouncycastle,
+    codec
+  )
 
 
   /** Logging */
@@ -79,9 +83,7 @@
     "com.typesafe" % "config" % "1.2.1",
     slf4jApi,
     log4jOverSlf4j,
-    logbackClassic,
-    bouncycastle,
-    codec
+    logbackClassic
   )
 
   lazy val baseScalaDependencies = Seq(
@@ -172,7 +174,7 @@
     "domain",
     file("domain"),
     settings = scalaProjectSettings ++ Seq(
-      libraryDependencies ++= testing
+      libraryDependencies ++= testing ++ crypto
     )
   ).dependsOn(common % fullScope)
 
