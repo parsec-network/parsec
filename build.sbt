@@ -52,6 +52,15 @@
     kafkaAvroSerializer
   )
 
+  /** Cryptography */
+  def bouncycastle = "org.bouncycastle" % "bcprov-ext-debug-jdk15on" % "1.55"
+  def codec = "org.apache.directory.studio" % "org.apache.commons.codec" % "1.8"
+  def crypto = Seq(
+    bouncycastle,
+    codec
+  )
+
+
   /** Logging */
   def slf4jApi = "org.slf4j" % "slf4j-api" % slf4jVersion
   def log4jOverSlf4j = "org.slf4j" % "log4j-over-slf4j" % slf4jVersion
@@ -165,7 +174,7 @@
     "domain",
     file("domain"),
     settings = scalaProjectSettings ++ Seq(
-      libraryDependencies ++= testing
+      libraryDependencies ++= testing ++ crypto
     )
   ).dependsOn(common % fullScope)
 
