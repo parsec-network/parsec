@@ -85,16 +85,13 @@ object Parsec extends EthereumCryptography with BitcoinCryptography {
                            channel: String = DEFAULT_CHANNEL,
                            hashPointerToPrevious: HashPointer) {
     assert(ALLOWED_CURRENCIES.contains(currency), s"PasecProtocol: Currency $currency is not an allowed currency. Use: " + ALLOWED_CURRENCIES.mkString(" or "))
-    assert(buyerPublicKey.length equals 128, "Wrong public key format. An ECDSA public key is 128 hex characters long")
     assert(isValidBuyerAddress)
 
     def isValidBuyerAddress: Boolean = {
       if (currency == "ETH")
         return buyerAddress equals ethereumAddressFromPublicKey(buyerPublicKey)
       else
-        return ((buyerAddress equals bitcoinP2PKHAddressFromPublicKey(buyerPublicKey))
-               ||
-               (buyerAddress equals bitcoinP2SHAddressFromPublicKey(buyerPublicKey)))
+        return buyerAddress equals bitcoinAddressFromPublicKey(buyerPublicKey)
     }
   }
 
