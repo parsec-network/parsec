@@ -94,8 +94,9 @@
   val sonatypeSnapshots = "Sonatype snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
   val ukMavenCentral = "UK Maven Central" at "http://uk.maven.org/maven2"
   val typesafeReleases = "Typesafe releases" at "http://repo.typesafe.com/typesafe/releases/"
+  val confluentMaven = "Confluent Maven Repository" at "http://packages.confluent.io/maven/"
 
-  lazy val resolvers = Seq(Resolver.defaultLocal, sonatypeSnapshots, ukMavenCentral, typesafeReleases)
+  lazy val resolvers = Seq(Resolver.defaultLocal, sonatypeSnapshots, ukMavenCentral, typesafeReleases, confluentMaven)
 
 /** Project settings */
 
