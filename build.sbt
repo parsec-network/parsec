@@ -161,7 +161,7 @@
     "root",
     file("."),
     settings = baseProjectSettings
-  ).aggregate(common, domain, simulator)
+  ).aggregate(common, domain, restApi, simulator)
 
   lazy val common = Project(
     "common",
@@ -188,7 +188,7 @@
       assemblyJarName in assembly := "parsec-rest-api.jar",
       libraryDependencies ++= testing ++ akka
     )
-  )
+  ).dependsOn(common % fullScope, domain % fullScope)
 
   lazy val simulator = Project(
     "simulator",
