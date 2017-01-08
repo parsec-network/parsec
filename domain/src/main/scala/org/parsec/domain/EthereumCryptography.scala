@@ -1,6 +1,8 @@
-package org.parsec.protocol
+package org.parsec
+package domain
 
 import java.util
+
 import org.apache.commons.codec.binary.Hex
 import org.bouncycastle.jcajce.provider.digest.Keccak
 

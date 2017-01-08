@@ -1,4 +1,5 @@
-package org.parsec.protocol
+package org.parsec
+package domain
 
 import org.apache.commons.codec.binary.Hex
 import org.bitcoinj.core.{ECKey, NetworkParameters}

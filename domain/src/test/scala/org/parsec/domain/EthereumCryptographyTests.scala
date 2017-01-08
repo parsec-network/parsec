@@ -1,4 +1,6 @@
-import org.parsec.protocol.EthereumCryptography
+package org.parsec
+package domain
+
 import org.scalatest.{FlatSpec, Matchers}
 
 class EthereumCryptographyTests extends FlatSpec with Matchers with EthereumCryptography {

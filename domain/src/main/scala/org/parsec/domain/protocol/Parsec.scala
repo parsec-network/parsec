@@ -1,4 +1,6 @@
-package org.parsec.protocol
+package org.parsec
+package domain
+package protocol
 
 /**
   * The Parsec protocol introduces a layer for `crypto-currency` transactions to take place,

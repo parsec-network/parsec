@@ -1,4 +1,6 @@
-import org.parsec.protocol.BitcoinCryptography
+package org.parsec
+package domain
+
 import org.scalatest.{FlatSpec, Matchers}
 
 class BitcoinCryptographyTests extends FlatSpec with Matchers with BitcoinCryptography {
