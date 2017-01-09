@@ -157,8 +157,8 @@
 
   val fullScope = "compile->compile;test->test"
 
-  lazy val build = Project(
-    "build",
+  lazy val root = Project(
+    "root",
     file("."),
     settings = baseProjectSettings
   ).aggregate(common, domain, simulator)
