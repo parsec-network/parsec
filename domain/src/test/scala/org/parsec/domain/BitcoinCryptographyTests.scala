@@ -1,9 +1,7 @@
 package org.parsec
 package domain
 
-import org.scalatest.{FlatSpec, Matchers}
-
-class BitcoinCryptographyTests extends FlatSpec with Matchers with BitcoinCryptography {
+class BitcoinCryptographyTests extends ParsecSpec with BitcoinCryptography {
 
   "Bitcoin addresses" should "be derived correctly from compressed public keys" in {
     val compressedPublicKey1 = "026591ed35e4a6c43684ede7b2cb37f6cc19fc6629a2abce8ee0f3e021e3f274e6"
