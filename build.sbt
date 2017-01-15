@@ -13,8 +13,8 @@
 
   /** Akka */
   def akkaActor = "com.typesafe.akka" %% "akka-actor" % akkaVersion
-  def akkaHttp = "com.typesafe.akka" %% "akka-http-experimental" % akkaVersion
-  def akkaHttpTestkit = "com.typesafe.akka" %% "akka-http-testkit" % akkaVersion % "test"
+  def akkaHttp = "com.typesafe.akka" %% "akka-http" % akkaHttpVersion
+  def akkaHttpTestkit = "com.typesafe.akka" %% "akka-http-testkit" % akkaHttpVersion % "test"
   def akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % akkaVersion
   def akkaStream = "com.typesafe.akka" %% "akka-stream" % akkaVersion
   def akkaStreamTestkit = "com.typesafe.akka" %% "akka-stream-testkit" % akkaVersion % "test"
