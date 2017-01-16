@@ -167,7 +167,7 @@
     "common",
     file("common"),
     settings = scalaProjectSettings ++ Seq(
-      libraryDependencies ++= testing :+ enumeratum
+      libraryDependencies ++= testing :+ enumeratum :+ json4sNative
     )
   )
 
