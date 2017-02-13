@@ -2,6 +2,8 @@ package org.parsec
 package restapi
 package marshalling
 
+import domain.protocol.Parsec.Invoice
+
 /**
   * Simple typeclass to retoactively extend the type properties of domain classes so that they can be un/marshalled
   * by [[org.parsec.restapi.marshalling.JsonMarshalling]].
@@ -12,3 +14,9 @@ package marshalling
   * @tparam A
   */
 trait RestApiMarshallable[A]
+
+object RestApiMarshallable {
+  object Invoices {
+    implicit object InvoiceMarshallable extends RestApiMarshallable[Invoice]
+  }
+}
